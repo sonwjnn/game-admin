@@ -1,5 +1,12 @@
 import { cn } from '@/lib/utils'
-import { LayoutDashboard, Table, User } from 'lucide-react'
+import {
+  Banknote,
+  HandCoins,
+  Landmark,
+  LayoutDashboard,
+  Table,
+  User,
+} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -45,6 +52,21 @@ export const Sidebar = ({ className }: Props) => {
           label="Tables"
           href="/tables"
           icon={<Table className="mr-5" />}
+        />
+        <SidebarItem
+          label="Banks"
+          href="/banks"
+          icon={<Landmark className="mr-5" />}
+        />
+        <SidebarItem
+          label="Recharges"
+          href="/recharges"
+          icon={<HandCoins className="mr-5" />}
+        />
+        <SidebarItem
+          label="Withdraws"
+          href="/withdraws"
+          icon={<Banknote className="mr-5" />}
         />
       </div>
       <div className="p-4">

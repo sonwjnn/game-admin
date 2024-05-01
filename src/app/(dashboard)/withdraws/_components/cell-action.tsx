@@ -13,10 +13,10 @@ import { Copy, Edit, MoreHorizontal, Trash } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
-import { TableColumn } from './columns'
+import { WithdrawColumn } from './columns'
 
 interface CellActionProps {
-  data: TableColumn
+  data: WithdrawColumn
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -25,7 +25,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id)
-    toast.success('Table ID copied to clipboard.')
+    toast.success('Withdraw ID copied to clipboard.')
   }
 
   return (
@@ -42,11 +42,13 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 h-4 w-4" /> Copy Id
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push(`/tables/${data.id}`)}>
+          <DropdownMenuItem
+            onClick={() => router.push(`/withdraws/${data.id}`)}
+          >
             <Edit className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={() => onOpen('deleteTable', { table: data })}
+            onClick={() => onOpen('deleteWithdraw', { withdrawId: data.id })}
           >
             <Trash className="mr-2 h-4 w-4" /> Delete
           </DropdownMenuItem>

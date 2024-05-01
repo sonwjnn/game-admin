@@ -68,3 +68,19 @@ export const BankSchema = z.object({
     .min(1, { message: 'Card holder name is required' }),
   expiryDate: z.string().min(1, { message: 'Expiry date is required' }),
 })
+
+export const RechargeSchema = z.object({
+  amount: z
+    .string()
+    .min(1, { message: 'Amount is required' })
+    .regex(/^[0-9]+$/, { message: 'Card number must be a number' }),
+  status: z.string().min(1, { message: 'Status is required' }),
+})
+
+export const WithdrawSchema = z.object({
+  amount: z
+    .string()
+    .min(1, { message: 'Amount is required' })
+    .regex(/^[0-9]+$/, { message: 'Card number must be a number' }),
+  status: z.string().min(1, { message: 'Status is required' }),
+})

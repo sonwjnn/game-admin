@@ -2,9 +2,17 @@ import { TableColumn } from '@/app/(dashboard)/tables/_components/columns'
 import { UserColumn } from '@/app/(dashboard)/users/_components/columns'
 import { create } from 'zustand'
 
-export type ModalType = 'deleteUser' | 'deleteTable'
+export type ModalType =
+  | 'deleteUser'
+  | 'deleteTable'
+  | 'deleteRecharge'
+  | 'deleteWithdraw'
+  | 'deleteBank'
 
 interface ModalData {
+  rechargeId?: string
+  withdrawId?: string
+  bankId?: string
   table?: TableColumn
   user?: UserColumn
   apiUrl?: string

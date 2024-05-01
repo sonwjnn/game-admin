@@ -36,11 +36,11 @@ import * as z from 'zod'
 
 import { ImageOption } from './image-options'
 
-interface UserFormProps {
+type UserFormProps = {
   initialData: User | null
 }
 
-export const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
+export const UserForm = ({ initialData }: UserFormProps) => {
   const { onOpen } = useModal()
 
   const router = useRouter()

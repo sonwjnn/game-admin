@@ -15,7 +15,7 @@ type Props = {
 
 export const SidebarItem = ({ label, iconSrc, href, icon }: Props) => {
   const pathname = usePathname()
-  const active = pathname === href
+  const active = pathname.includes(href) && href !== '/'
 
   return (
     <Button
