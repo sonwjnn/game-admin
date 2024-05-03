@@ -6,7 +6,9 @@ import { TablesClient } from './_components/client'
 import { TableColumn } from './_components/columns'
 
 const TablesPage = async () => {
-  const { response: tables } = await tableApi.getTables()
+  const { response } = await tableApi.getTables()
+
+  const tables = response.tables || []
 
   const formattedTables: TableColumn[] = tables.map((item: Table) => ({
     id: item.id,

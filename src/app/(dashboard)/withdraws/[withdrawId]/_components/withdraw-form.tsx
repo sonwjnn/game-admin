@@ -42,7 +42,6 @@ export const WithdrawForm = ({ initialData }: WithdrawFormProps) => {
 
   const user = useCurrentUser()
   const router = useRouter()
-  const { update } = useSession()
 
   const [loading, setLoading] = useState(false)
 
