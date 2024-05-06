@@ -8,7 +8,7 @@ import { TableColumn } from './_components/columns'
 const TablesPage = async () => {
   const { response } = await tableApi.getTables()
 
-  const tables = response.tables || []
+  const tables = response?.tables || []
 
   const formattedTables: TableColumn[] = tables.map((item: Table) => ({
     id: item.id,
