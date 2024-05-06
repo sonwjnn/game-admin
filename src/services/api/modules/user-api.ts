@@ -4,6 +4,7 @@ import publicClient from '@/services/api/client/public-client'
 const userEndpoints = {
   getAll: `users`,
   getUserById: ({ userId }: { userId: string }) => `users/${userId}`,
+  getUserByRole: ({ role }: { role: string }) => `users/role/${role}`,
   getUserByUsername: ({ username }: { username: string }) =>
     `users/username/${username}`,
   register: `auth/register`,
@@ -19,7 +20,7 @@ const userApi = {
   login: async (data: any) => {
     try {
       const response = await publicClient.post(userEndpoints.login, data)
-
+      
       if (response && response.data) return { response: response.data }
       return { response }
     } catch (error) {
@@ -33,7 +34,7 @@ const userApi = {
   }) => {
     try {
       const response = await publicClient.post(userEndpoints.register, data)
-
+      
       if (response && response.data) return { response: response.data }
       return { response }
     } catch (error) {
@@ -43,7 +44,19 @@ const userApi = {
   getAll: async () => {
     try {
       const response = await privateClient.get(userEndpoints.getAll)
-
+      
+      if (response && response.data) return { response: response.data }
+      return { response }
+    } catch (error) {
+      return { error }
+    }
+  },
+  getUsersByRoleList: async ({ role }: { role: string }) => {
+    try {
+      const response = await privateClient.get(
+        userEndpoints.getUserByRole({ role }),
+      )
+      
       if (response && response.data) return { response: response.data }
       return { response }
     } catch (error) {
@@ -53,7 +66,7 @@ const userApi = {
   getUserById: async ({ userId }: { userId: string }) => {
     try {
       const response = await privateClient.get(
-        userEndpoints.getUserById({ userId })
+        userEndpoints.getUserById({ userId }),
       )
       if (response && response.data) return { response: response.data }
       return { response }
@@ -64,7 +77,7 @@ const userApi = {
   getUserByUsername: async ({ username }: { username: string }) => {
     try {
       const response = await publicClient.get(
-        userEndpoints.getUserByUsername({ username })
+        userEndpoints.getUserByUsername({ username }),
       )
       if (response && response.data) return { response: response.data }
       return { response }
@@ -76,9 +89,9 @@ const userApi = {
     try {
       const response = await privateClient.put(
         userEndpoints.update({ userId }),
-        data
+        data,
       )
-
+      
       if (response && response.data) return { response: response.data }
       return { response }
     } catch (error) {
@@ -89,9 +102,9 @@ const userApi = {
     try {
       const response = await privateClient.post(
         userEndpoints.newPassword({ userId }),
-        data
+        data,
       )
-
+      
       if (response && response.data) return { response: response.data }
       return { response }
     } catch (error) {
@@ -101,23 +114,23 @@ const userApi = {
   removeUser: async (userId: string) => {
     try {
       const response = await privateClient.delete(
-        userEndpoints.delete({ userId })
+        userEndpoints.delete({ userId }),
       )
-
+      
       if (response && response.data) return { response: response.data }
       return { response }
     } catch (error) {
       return { error: 'Something went wrong' }
     }
   },
-
+  
   updateAll: async (data: any, userId: string) => {
     try {
       const response = await privateClient.put(
         userEndpoints.updateAll({ userId }),
-        data
+        data,
       )
-
+      
       if (response && response.data) return { response: response.data }
       return { response }
     } catch (error) {
