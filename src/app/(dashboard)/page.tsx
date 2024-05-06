@@ -1,5 +1,14 @@
 import { DashboardItem } from './_components/client'
 import { Heading } from '@/components/ui/heading'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+
 
 const DashboardPage = async () => {
   
@@ -10,10 +19,21 @@ const DashboardPage = async () => {
         description="Manage"
       />
       
-      <DashboardItem data={[]} />
-      
-      
-      
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+    
+    
+    
+    
     </div>
   )
 }
