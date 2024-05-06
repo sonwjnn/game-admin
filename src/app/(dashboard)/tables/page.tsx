@@ -6,9 +6,7 @@ import { TablesClient } from './_components/client'
 import { TableColumn } from './_components/columns'
 
 const TablesPage = async () => {
-  const { response } = await tableApi.getTables()
-
-  const tables = response?.tables || []
+  const { response: tables } = await tableApi.getTables()
 
   const formattedTables: TableColumn[] = tables.map((item: Table) => ({
     id: item.id,
@@ -21,7 +19,7 @@ const TablesPage = async () => {
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <TablesClient data={formattedTables} />
+        <TablesClient data={formattedTables || []} />
       </div>
     </div>
   )

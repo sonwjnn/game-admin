@@ -2,7 +2,7 @@ import publicClient from '@/services/api/client/private-client'
 
 const tableEndpoints = {
   getTableById: ({ tableId }: { tableId: string }) => `tables/${tableId}`,
-  getTables: 'tables/',
+  getTables: 'admin/tables/',
   delete: ({ tableId }: { tableId: string }) => `tables/${tableId}`,
   update: ({ tableId }: { tableId: string }) => `tables/${tableId}`,
   create: 'tables/',
