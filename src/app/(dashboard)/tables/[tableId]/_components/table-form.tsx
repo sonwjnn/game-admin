@@ -49,6 +49,7 @@ export const TableForm = ({ initialData }: TableFormProps) => {
     defaultValues: initialData || {
       name: '',
       minBuyIn: '',
+      ante: '',
     },
   })
 
@@ -60,7 +61,7 @@ export const TableForm = ({ initialData }: TableFormProps) => {
 
       if (initialData) {
         const { response, error } = await tableApi.update(
-          { ...values, minBuyIn: +values.minBuyIn },
+          { ...values, minBuyIn: +values.minBuyIn, ante: +values.ante },
           initialData?.id as string
         )
         if (error) {
@@ -71,6 +72,7 @@ export const TableForm = ({ initialData }: TableFormProps) => {
         const { response, error } = await tableApi.create({
           ...values,
           minBuyIn: +values.minBuyIn,
+          ante: +values.ante,
           userId: user.id,
         })
         if (error) {
@@ -105,6 +107,7 @@ export const TableForm = ({ initialData }: TableFormProps) => {
                   name: initialData.name,
                   min: initialData.minBuyIn.toString(),
                   max: initialData.maxBuyIn.toString(),
+                  ante: initialData.ante.toString(),
                   owner: initialData.userId,
                 },
               })
@@ -144,6 +147,22 @@ export const TableForm = ({ initialData }: TableFormProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Min buy-in</FormLabel>
+                  <FormControl>
+                    <div className="flex items-center gap-x-4">
+                      <Input disabled={loading} {...field} />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="ante"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Ante</FormLabel>
                   <FormControl>
                     <div className="flex items-center gap-x-4">
                       <Input disabled={loading} {...field} />

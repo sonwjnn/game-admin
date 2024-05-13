@@ -10,6 +10,7 @@ export type TableColumn = {
   owner: string
   min: string
   max: string
+  ante: string
 }
 
 export const columns: ColumnDef<TableColumn>[] = [
@@ -20,6 +21,10 @@ export const columns: ColumnDef<TableColumn>[] = [
   {
     accessorKey: 'owner',
     header: 'Owner',
+  },
+  {
+    accessorKey: 'ante',
+    header: 'Ante',
   },
   {
     accessorKey: 'min',

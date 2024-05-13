@@ -56,6 +56,7 @@ export type Table = {
 
   minBuyIn: string
   maxBuyIn: string
+  ante: string
   maxPlayers: number
 
   histories: History[]

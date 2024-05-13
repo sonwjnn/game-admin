@@ -13,6 +13,7 @@ const TablesPage = async () => {
     name: item.name,
     min: formatter(+item.minBuyIn),
     max: formatter(+item.maxBuyIn),
+    ante: formatter(+item.ante),
     owner: item.user?.username,
   }))
 

@@ -25,15 +25,25 @@ export const UserSchema = z.object({
   role: z.string().min(1, { message: 'User role is required' }),
 })
 
-export const TableSchema = z.object({
-  name: z.string().min(1, { message: 'Table name is required' }),
-  minBuyIn: z
-    .string()
-    .min(1, { message: 'Minimum buy in is required' })
-    .refine(value => !isNaN(Number(value)), {
-      message: 'Minimum buy in must be a number',
-    }),
-})
+export const TableSchema = z
+  .object({
+    name: z.string().min(1, { message: 'Table name is required' }),
+    minBuyIn: z
+      .string()
+      .min(1, { message: 'Minimum buy in is required' })
+      .refine(value => !isNaN(Number(value)), {
+        message: 'Minimum buy in must be a number',
+      }),
+    ante: z
+      .string()
+      .min(1, { message: 'Ante is required' })
+      .refine(value => !isNaN(Number(value)), {
+        message: 'Ante must be a number',
+      }),
+  })
+  .refine(data => Number(data.minBuyIn) >= Number(data.ante), {
+    message: 'Ante must be less than or equal to Minimum buy in',
+  })
 
 export const NewPasswordSchema = z
   .object({
