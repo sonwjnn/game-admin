@@ -13,10 +13,16 @@ const TablePage = async ({ params }: Props) => {
     tableId: params.tableId,
   })
 
+  const formattedTable = {
+    ...table,
+    minBuyIn: table.minBuyIn.toString(),
+    ante: table.ante.toString(),
+  }
+
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <TableForm initialData={table} />
+        <TableForm initialData={formattedTable} />
       </div>
     </div>
   )

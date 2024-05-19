@@ -12,6 +12,7 @@ import {
 import { Heading } from '@/components/ui/heading'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
+import { Switch } from '@/components/ui/switch'
 import { useCurrentUser } from '@/hooks/use-current-user'
 import { TableSchema } from '@/schemas'
 import tableApi from '@/services/api/modules/table-api'
@@ -50,6 +51,7 @@ export const TableForm = ({ initialData }: TableFormProps) => {
       name: '',
       minBuyIn: '',
       ante: '',
+      chatBanned: false,
     },
   })
 
@@ -169,6 +171,23 @@ export const TableForm = ({ initialData }: TableFormProps) => {
                     </div>
                   </FormControl>
                   <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="chatBanned"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                  <FormLabel>Chat Banned</FormLabel>
+                  <FormControl>
+                    <Switch
+                      disabled={loading}
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
                 </FormItem>
               )}
             />

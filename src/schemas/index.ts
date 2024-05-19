@@ -40,6 +40,7 @@ export const TableSchema = z
       .refine(value => !isNaN(Number(value)), {
         message: 'Ante must be a number',
       }),
+    chatBanned: z.boolean(),
   })
   .refine(data => Number(data.minBuyIn) >= Number(data.ante), {
     message: 'Ante must be less than or equal to Minimum buy in',

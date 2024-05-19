@@ -53,6 +53,8 @@ export type Table = {
   messages: Message[]
   matches?: Match[]
   isHandOver: boolean
+  deleted:boolean
+  chatBanned: boolean
 
   minBuyIn: string
   maxBuyIn: string
